@@ -1,27 +1,88 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const connection = require("./db");
-const crudRoutes = require("./routes/crudRoutes");
-
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const port = process.env.PORT || 3009;
 
-// database connection
-connection();
+app.use(express.static(__dirname + '/public'));
 
-// middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
-app.use((req, res, next) => {
-	res.locals.path = req.path;
-	next();
+function onConnection(socket){
+  socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+  
+
+  
+}
+
+io.on('connection', onConnection);
+
+
+
+////////////
+
+// Chatroom
+
+let numUsers = 0;
+
+io.on('connection', (socket) => {
+  let addedUser = false;
+
+  // when the client emits 'new message', this listens and executes
+  socket.on('new message', (data) => {
+    // we tell the client to execute 'new message'
+    socket.broadcast.emit('new message', {
+      username: socket.username,
+      message: data
+    });
+  });
+
+  // when the client emits 'add user', this listens and executes
+  socket.on('add user', (username) => {
+    if (addedUser) return;
+
+    // we store the username in the socket session for this client
+    socket.username = username;
+    ++numUsers;
+    addedUser = true;
+    socket.emit('login', {
+      numUsers: numUsers
+    });
+    // echo globally (all clients) that a person has connected
+    socket.broadcast.emit('user joined', {
+      username: socket.username,
+      numUsers: numUsers
+    });
+  });
+
+  // when the client emits 'typing', we broadcast it to others
+  socket.on('typing', () => {
+    socket.broadcast.emit('typing', {
+      username: socket.username
+    });
+  });
+
+  // when the client emits 'stop typing', we broadcast it to others
+  socket.on('stop typing', () => {
+    socket.broadcast.emit('stop typing', {
+      username: socket.username
+    });
+  });
+
+  // when the user disconnects.. perform this
+  socket.on('disconnect', () => {
+    if (addedUser) {
+      --numUsers;
+
+      // echo globally that this client has left
+      socket.broadcast.emit('user left', {
+        username: socket.username,
+        numUsers: numUsers
+      });
+    }
+  });
 });
+ 
+// ///////////
 
-// routes
-app.use("/api/cruds", crudRoutes);
-//app.use("/api/auth", authRoute);
 
-// listening on port
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+
+http.listen(port, () => console.log('listening on port ' + port));

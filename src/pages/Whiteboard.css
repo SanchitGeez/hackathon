@@ -1,0 +1,344 @@
+/**
+ * Fix user-agent
+ */
+
+ * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+  }
+  body {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    overflow-y: hidden;
+
+  }
+  
+  /**
+   * Canvas
+   */
+
+   .head {
+     margin-left: 230px;
+     margin-top: 10px;
+     
+   }
+  
+  .whiteboard {
+    height: 1000px;
+    width: 3000px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin-left: 50px;
+    margin-top: 50px;
+    border: 5px solid black;
+    background: white;
+    border-radius: 20px;
+    
+}
+    
+    
+  
+  
+  .colors {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    margin-left: 350px;
+    margin-top: 550px;
+  }
+  .sizes {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    margin-left: 350px;
+    margin-top: 600px;
+    
+
+  }
+
+  .size {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    border: 2px solid white;
+    background-color: rgb(245, 229, 10);
+    margin: 1px;
+    margin-top: 350px;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    font-size: large;
+    padding-top: 10px;
+    font-weight: bold;
+
+
+  }
+
+  .clear-all {
+    width: 96px;
+  }
+  .size:hover {
+    border-radius: 25px;
+
+}
+
+  
+  .color {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    border: 2px solid white;
+    margin: 1px;
+    border-radius: 10px;
+    margin-top: 350px;
+    
+  }
+  /* .color:hover {
+        border-radius: 25px;
+
+  } */
+  .color:hover {
+    border-radius: 25px;
+  }
+  .color:active {
+    border-radius: 25px;
+
+  }
+  
+
+  .color.black { background-color: black; }
+  .color.red { background-color: red; }
+  .color.green { background-color: green; }
+  .color.blue { background-color: blue; }
+  .color.yellow { background-color: yellow; }
+  .color.white {background-color: white; border: 1px solid whitesmoke;}
+  .eraser {padding-top: 5px; padding-left: 5px;}
+.communication-conatiner {
+  margin-left: 2570px;
+
+}
+
+.credit {
+  color: yellow;
+}
+.githubLink {
+  text-decoration: none;
+  color: dodgerblue;
+
+}
+
+/* /CHAT CSS/ */
+.chat-window {
+  width: 500px;
+  border: 5px solid black;
+  margin-top: 50px;
+}
+
+
+
+
+/* /CHAT CSS/ */
+html, input {
+  font-family:
+    "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+/* Pages */
+
+.pages {
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  width: 450px;
+}
+
+.page {
+  height: 640px;
+  position: relative;
+  width: 480px;
+  margin-top: 20px;
+  border: 5px solid black;
+  border-radius: 20px;
+}
+
+/* Login Page */
+
+.login.page {
+  background-color: rgb(39, 36, 36);
+}
+
+.login.page .form {
+  height: 100px;
+  margin-top: -100px;
+  position: absolute;
+
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+.login.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}
+
+.login.page .title {
+  font-size: 200%;
+}
+
+.login.page .usernameInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.login.page .title, .login.page .usernameInput {
+  color: #fff;
+  font-weight: 100;
+}
+
+/* Chat page */
+
+.chat.page {
+  display: none;
+  background-color: rgb(236, 159, 148);
+}
+
+/* Font */
+
+.messages {
+  font-size: 150%;
+}
+
+.inputMessage {
+  font-size: 100%;
+}
+
+.log {
+  color: rgb(12, 6, 6);
+  font-size: 70%;
+  margin: 5px;
+  text-align: center;
+}
+
+/* Messages */
+
+.chatArea {
+  height: 100%;
+  padding-bottom: 60px;
+}
+
+.messages {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 10px 20px 10px 20px;
+  
+}
+.messages::-webkit-scrollbar {
+  display: none;
+}
+
+
+.message.typing .messageBody {
+  color: gray;
+}
+
+.username {
+  font-weight: 700;
+  overflow: hidden;
+  padding-right: 15px;
+  text-align: right;
+}
+
+/* Input */
+
+.inputMessage {
+  border: 5px solid #000;
+  border-radius: 20px;
+  
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+
+/* TRIAL WEBRTC */
+/* button {
+  margin: 0 20px 0 0;
+  width: 83px;
+}
+
+button#hangupButton {
+    margin: 0;
+}
+
+video {
+  --width: 45%;
+  width: var(--width);
+  height: calc(var(--width) * 0.75);
+  margin: 0 0 20px 0;
+  vertical-align: top;
+}
+
+video#localVideo {
+  margin: 0 20px 20px 0;
+}
+
+div.box {
+  margin: 1em;
+}
+
+@media screen and (max-width: 400px) {
+  button {
+    width: 83px;
+    margin: 0 11px 10px 0;
+  }
+
+  video {
+    height: 90px;
+    margin: 0 0 10px 0;
+    width: calc(50% - 7px);
+  }
+  video#localVideo {
+    margin: 0 10px 20px 0;
+  }
+
+} */
+
+/*TRIAL END */

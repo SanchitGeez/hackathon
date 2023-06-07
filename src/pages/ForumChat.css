@@ -18,6 +18,7 @@
   object-fit: cover;
   opacity: 0.7;
 }
+
 .link-fa-11jpg,
 .link-fa-11jpg1,
 .link-fa-11jpg2,
@@ -272,4 +273,10 @@
   font-size: 40px;
   color: var(--color-white);
   font-family: var(--font-poppins);
+}
+.whiteboard{
+  text-align: center;
+  margin: auto;
+  margin-left: 60%;
+  font-size: 20px;
 }

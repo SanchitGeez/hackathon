@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./ForumChat.css";
 const ForumChat = () => {
   const navigate = useNavigate();
@@ -69,6 +69,7 @@ const ForumChat = () => {
           />
         </div>
       </div>
+      
       <div className="icon-attachment-parent">
         <img className="icon-attachment" alt="" src="/-icon-attachment.svg" />
         <a className="icon-group">

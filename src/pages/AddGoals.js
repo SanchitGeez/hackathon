@@ -1,8 +1,5 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import axios, { post } from "axios";
-import React, { useState } from "react";
-
 import "./AddGoals.css";
 const AddGoals = () => {
   const navigate = useNavigate();
@@ -65,31 +62,7 @@ const AddGoals = () => {
   const onProfileIconClick = useCallback(() => {
     navigate("/profile-page");
   }, [navigate]);
-////////////////////
-  const initialState = {
-		subject: "",
-		topic: "",
-		date: "",
-		month: ""
-	};
-  const [crud, setCrud] = useState(initialState);
 
-  function handleSubmit(event) {
-		event.preventDefault();
-		//if (!crud.companyName || !crud.email) return;
-		async function postCrud() {
-			try {
-				const response = await axios.post("/api/cruds/", crud);
-				navigate(`/crud/${response.data._id}`);
-			} catch (error) {
-				console.log("error found :(", error);
-			}
-		}
-		postCrud();
-	}
-  function handleChange(event) {
-		setCrud({ ...crud, [event.target.name]: event.target.value });
-	}
   return (
     <article className="add-goals">
       <img
@@ -136,27 +109,27 @@ const AddGoals = () => {
             className="frame-child3"
             type="text"
             data-scroll-to="rectangleInput"
-          />  
+          />
         </div> */}
 
-        <form className='add-goal-form' onSubmit={handleSubmit}>
-            <input name="subject" type="text" value={crud.subject} onChange={handleChange} className='bg-stone-50 add-goals-input subject-prop' placeholder='Subject'></input>
-            <input name="topic" type="text" value={crud.topic} onChange={handleChange} className='bg-stone-50 add-goals-input topic-prop' placeholder='Topic'></input>
+        <form className='add-goal-form'>
+            <input className='bg-stone-50 add-goals-input subject-prop' placeholder='Subject'></input>
+            <input className='bg-stone-50 add-goals-input topic-prop' placeholder='Topic'></input>
             <div className='date-container'>
-             <input  name="date" type="number" value={crud.date} onChange={handleChange} className='bg-stone-50 add-goals-input date-prop' placeholder='Date'></input>
-             <input name="month" type="number" value={crud.month} onChange={handleChange} className='bg-stone-50 add-goals-input month-prop' placeholder='Month'></input>
+             <input className='bg-stone-50 add-goals-input date-prop' placeholder='Date'></input>
+             <input className='bg-stone-50 add-goals-input month-prop' placeholder='Month'></input>
             </div>
             <button className='bg-stone-50 add-goals-button' type='Submit'>ADD GOAL +</button>
             
         </form>
 
-        {/* <div className="addgoalbutton" onClick={onAddGoalButtonContainerClick}>
+        <div className="addgoalbutton" onClick={onAddGoalButtonContainerClick}>
           <div className="addgoalbutton-child" />
           <div className="addgoaltext">
             <div className="add-goal">{`Add goal `}</div>
             <img className="plusicon" alt="" src="/plusicon.svg" />
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="navbar4">
         <div className="navbar-child2" />

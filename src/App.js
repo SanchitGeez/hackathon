@@ -12,6 +12,7 @@ import AddGoals from "./pages/AddGoals";
 import MyGoals from "./pages/MyGoals";
 import { useEffect } from "react";
 import Chatbox from "./pages/Chatbox";
+import Whiteboard from "./pages/Whiteboard";
 
 function App() {
   const action = useNavigationType();
