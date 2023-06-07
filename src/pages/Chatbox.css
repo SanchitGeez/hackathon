@@ -1,0 +1,25 @@
+.chatbox-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .chat-engine-chat-list {
+    height: calc(100% - 50px);
+  }
+  
+  .chat-engine-message-form {
+    display: none;
+  }
+  
+  .my-goals-header{
+    font-size: 50px;
+    font-family: Poppins;
+    margin: 20px;
+    background: none;
+  }
